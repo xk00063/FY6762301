@@ -39,6 +39,10 @@
     <style>
       .mySlides {display:none;}
     </style>
+
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
   </head>
 
@@ -47,8 +51,27 @@
 
 
 
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <body style="background-color:#FFFFFF; margin-left:50px;">
 
     <!--table of contents-->
@@ -141,18 +164,17 @@
     
     <p>
     The quadratic formula is given by:
-    </p>
     <!--MathML representations of the quadratic formula-->
-    <math xmlns="http://www.w3.org/1998/Math/MathML">
-      <mrow>
-        <msup><mi>x</mi><mn>2</mn></msup>
-        <mo>+</mo><mi>4</mi><mo>&InvisibleTimes;</mo><mi>x</mi>
-        <mo>+</mo><mi>4</mi>
-        <mo>=</mo>
-        <mi>0</mi>
-      </mrow>
-    </math>
-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+            <msup><mi>x</mi><mn>2</mn></msup>
+            <mo>+</mo><mi>4</mi><mo>&InvisibleTimes;</mo><mi>x</mi>
+            <mo>+</mo><mi>4</mi>
+            <mo>=</mo>
+            <mi>0</mi>
+        </mrow>
+        </math>
+    </p>
     
     <h3 id="References">References</h3>
       <p class="ex1">
@@ -174,16 +196,254 @@
       </p>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <hr>
+
+    <h3>Task: Change Colour</h3>
     <button id="colorButton">Click me to change colour</button>
     <script>
-      var button = document.getElementByld("colorButton");
-      funcction changeColor(){
+      var button = document.getElementById("colorButton");
+      function changeColor(){
         var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
         button.style.backgroundColor = randomColor;
       }
       button.addEventListener("click", changeColor);
     </script>
-    
-  </body> 
-  
+
+
+    <h3>Task: Show Alert</h3>
+    <input type="text" id="textInput" placeholder="Enter alert text here">
+    <button id="alertButton">Show Alert</button>
+    <script>
+        var input = document.getElementById("textInput");
+        var Button = document.getElementById("alertButton");
+        function showAlert(){
+            var inputText = input.value;
+            alert("You entered :" + inputText);
+        }
+        Button.addEventListener("click", showAlert);
+    </script>
+
+
+    <h3>Task: Random number</h3>
+    <button id="generateButton">Generate Random Number</button>
+    <p id="randomNumber">Random Number: </p>
+    <script>
+        var Button = document.getElementById("generateButton");
+        var randomPara = document.getElementById("randomNumber");
+        function generateRandom(){
+            var randomNum = Math.floor(Math.random() * 10) + 1;
+            randomPara.textContent = "Random Number: " + randomNum;
+        }
+        Button.addEventListener("click", generateRandom);
+    </script>
+
+
+    <h3>Task: PieChart</h3>
+    <div id="chart1_div" style="width: 600px; height: 400px;"></div>
+    <script type = "text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart1);
+        function drawChart1(){
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Work', 8],
+                ['Sleep', 8],
+                ['Eat', 2],
+                ['Study', 4],
+                ['Exercise', 2]
+            ]);
+            var options = {
+                title: 'My Daily Activities'
+            };
+            var chart1 = new google.visualization.PieChart(document.getElementById('chart1_div'));
+            chart1.draw(data, options);
+        }
+    </script>
+
+    <h3>Task: ScatterChart</h3>
+    <div id="chart2_div" style="width: 600px; height: 400px;"></div>
+    <script type = "text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart2);
+        function drawChart2(){
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Age');
+            data.addColumn('number', 'Salary');
+            data.addRows([
+                [25, 30000],
+                [30, 40000],
+                [35, 50000],
+                [40, 60000],
+                [45, 70000]
+            ]);
+            var options = {
+                title: 'Age vs Salary',
+                hAxis: {title: 'Age'},
+                vAxis: {title: 'Salary'},
+                legend: 'none'
+            };
+            var chart2 = new google.visualization.ScatterChart(document.getElementById('chart2_div'));
+            chart2.draw(data, options);
+        }
+    </script>
+
+
+    <h3>Task: BarChart</h3>
+    <div id="chart3_div" style="width: 600px; height: 400px;"></div>
+    <script type = "text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart3);
+        function drawChart3(){
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'City');
+            data.addColumn('number', 'Population');
+            data.addRows([
+                ['London', 8000000],
+                ['Birmingham', 4000000],
+                ['Edinburgh', 2700000],
+            ]);
+            var options = {
+                title: '2023 City Population',
+                hAxis: {title: 'Population'},
+                vAxis: {title: 'City'},
+                legend: 'none'
+            };
+            var chart3 = new google.visualization.BarChart(document.getElementById('chart3_div'));
+            chart3.draw(data, options);
+        }
+    </script>
+
+
+    <h3>Task: LineChart</h3>
+    <div id="chart4_div" style="width: 600px; height: 400px;"></div>
+    <script type = "text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart4);
+        function drawChart4(){
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Year/City');
+            data.addColumn('number', 'London');
+            data.addColumn('number', 'Birmingham');
+            data.addColumn('number', 'Edinburgh');
+            data.addRows([
+                ['2013', 8414000,1092200,495000],
+                ['2015', 8661000,1113000,507000],
+                ['2017', 8916000,1137100,519000],
+                ['2019', 9177000,1141800,531000],
+                ['2021', 9426000,1142500,543000],
+                ['2023', 9648000,1153900,554000]
+            ]);
+            var options = {
+                title: '10 years population trend',
+                hAxis: {title: 'Year'},
+                vAxis: {title: 'Population'},
+            };
+            var chart4 = new google.visualization.LineChart(document.getElementById('chart4_div'));
+            chart4.draw(data, options);
+        }
+    </script>
+
+
+    <h3>Task: ColumnChart</h3>
+    <div id="chart5_div" style="width: 600px; height: 400px;"></div>
+    <script type = "text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart5);
+        function drawChart5(){
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Month');
+            data.addColumn('number', 'Sales');
+            data.addColumn({ role: 'style' });
+            data.addRows([
+                ['January', 8000000, 'color: #3366CC'],
+                ['February', 4000000, 'color: #DC3912'],
+                ['March', 2700000, 'color: #FF9900']
+            ]);
+            var options = {
+                title: '2023 Monthly Sales',
+                hAxis: {title: 'Month'},
+                vAxis: {title: 'Sales(in £)'},
+                legend: 'none'
+            };
+            var chart5 = new google.visualization.ColumnChart(document.getElementById('chart5_div'));
+            chart5.draw(data, options);
+        }
+    </script>
+
+
+
+    <h3>Task: Fetch Last Updated Time from GitHub</h3>
+
+    <div id="last-updated">Loading last update time...</div>
+
+    <!-- Verify Button -->
+    <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
+    Verify Last Modified Time
+    </button>
+
+    <script>
+    async function getLastUpdatedTime() {
+        const username = "xk00063";   // 替换成你的 GitHub 用户名
+        const repo = "FY6762301";       // 替换成你的仓库名
+
+        const url = `https://api.github.com/repos/${username}/${repo}/commits`;
+
+        try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+            'Accept': 'application/vnd.github.v3+json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error fetching data: ${response.status} - ${response.statusText}`);
+        }
+
+        const commits = await response.json();
+        if (commits && commits.length > 0) {
+            const lastCommitDate = new Date(commits[0].commit.committer.date);
+            // Displaying the time on load
+            document.getElementById('last-updated').innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
+        } else {
+            document.getElementById('last-updated').innerText = 'No commits found in the repository.';
+        }
+        } catch (error) {
+        console.error('Error fetching the last updated time:', error);
+        document.getElementById('last-updated').innerText = 'Error fetching update time. Please check the repository details.';
+        }
+    }
+
+    // Function to verify the last update time by re-fetching it from the API
+    async function verifyLastUpdatedTime() {
+        document.getElementById('last-updated').innerText = 'Verifying...';
+        await getLastUpdatedTime();
+        alert("Last modified time has been successfully verified from GitHub API.");
+    }
+
+    // Initial load to display the time on page load
+    window.onload = getLastUpdatedTime;
+    </script>
+
+
+
+
+  </body>
+
 </html>
