@@ -456,8 +456,7 @@
             function displayTotalWordCount() {
                 const AbstractCount = displayWordCount('Abstract_InText');
                 const IntroductionCount = displayWordCount('Introduction_InText');
-                const AnalysisAndDiscussionCount = displayWordCount('AnalysisAndDiscussion_InText');
-                const TotalWordCount = AbstractCount + IntroductionCount + AnalysisAndDiscussionCount;
+                const TotalWordCount = AbstractCount + IntroductionCount;
                 document.getElementById('totalWordCount').innerText = `Total Word Count: ${TotalWordCount}`;
             }
             window.onload = displayTotalWordCount;
